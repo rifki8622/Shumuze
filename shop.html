@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shumuze Store - Toko</title>
+  <style>
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: url('img/pink.jpeg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      background-color: #ffb6c1;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      animation: fadeInDown 1s ease;
+      border-bottom: 5px solid #ff69b4;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 1.2rem;
+    }
+
+    .kategori-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px;
+      flex-wrap: wrap;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .kategori-tabs button {
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff69b4;
+      transition: transform 0.2s;
+    }
+
+    .kategori-tabs button:hover {
+      background-color: #ff1493;
+      transform: scale(1.1);
+    }
+
+    .produk-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .produk {
+      background: white;
+      border: 2px solid #ffc0cb;
+      border-radius: 20px;
+      padding: 15px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 0 10px #ffccdd;
+      transition: transform 0.3s;
+    }
+
+    .produk:hover {
+      transform: scale(1.05);
+    }
+
+    .produk img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 10px;
+    }
+
+    .produk h3 {
+      margin: 5px 0;
+      font-size: 1.1rem;
+      color: #ff69b4;
+    }
+
+    .produk p {
+      font-weight: bold;
+      margin: 5px 0 10px;
+      color: #333;
+    }
+
+    .btn-wa {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-wa:hover {
+      background-color: #ff1493;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      font-size: 1rem;
+      background-color: rgba(255, 182, 193, 0.7);
+      border-top: 3px solid #ff69b4;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+<audio id="musik" loop>
+  <source src="musik/lagu.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const izinkan = localStorage.getItem("izinkanMusik");
+    if (izinkan === "yes") {
+      const musik = document.getElementById("musik");
+      musik.play().catch(err => {
+        console.warn("Gagal putar musik:", err);
+      });
+    }
+  });
+</script>
+
+
+</head>
+<body>
+
+  <header>
+    <h1>💕 Shumuze Store</h1>
+    <p>Apk premium,Top up,Dan lainnya hanya disini.. 💖</p>
+  </header>
+
+  <div class="kategori-tabs">
+    <button onclick="tampilkan('kuota')">Kuota</button>
+    <button onclick="tampilkan('premium')">Aplikasi Premium</button>
+    <button onclick="tampilkan('topup')">Top Up Game</button>
+  </div>
+
+  <section id="kuota" class="produk-container">
+    <div class="produk">
+      <img src="img/kuota.jpeg" alt="Kuota ">
+      <h3>Kuota/Pulsa All operator</h3>
+      <p>Rp25.000</p>
+      <a href="https://wa.me/6289527986468?text=Hai%20aku%20mau%20beli%20kuota%20All%20operator" class="btn-wa">Beli via WhatsApp</a>
+    </div>
+  </section>
+
+  <section id="premium" class="produk-container" style="display: none;">
+    <div class="produk">
+      <img src="img/prem.jpeg" alt="Netflix">
+      <h3>Apk Premium</h3>
+      <p>Rp5.000-15.000</p>
+      <a href="https://wa.me/6289527986468?text=Hai%20aku%20mau%20beli%20akun%20Apk%20Premium" class="btn-wa">Beli via WhatsApp</a>
+    </div>
+  </section>
+
+  <section id="topup" class="produk-container" style="display: none;">
+    <div class="produk">
+      <img src="img/top.jpeg" alt="Topup Game">
+      <h3>Top Up All game</h3>
+      <p>Mulai dari RP5.000</p>
+      <a href="https://wa.me/6289527986468?text=Hai%20aku%20mau%20topup%2086%20diamond%20Mobile%20Legends" class="btn-wa">Beli via WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>💖 Shumuze Store 💖</p>
+    💕 Terima kasih sudah mampir ke Shumuze Store 💕
+  </footer>
+
+  <script>
+    function tampilkan(kategori) {
+      document.getElementById('kuota').style.display = 'none';
+      document.getElementById('premium').style.display = 'none';
+      document.getElementById('topup').style.display = 'none';
+      document.getElementById(kategori).style.display = 'flex';
+    }
+  </script>
+
+</body>
+</html>
